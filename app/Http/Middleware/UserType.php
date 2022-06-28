@@ -14,9 +14,9 @@ class UserType
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, $type)
+    public function handle(Request $request, Closure $next, $types)
     {
-        if ($request->user()->type == $type)
+        if (in_array($request->user()->type, explode(',', $types)))
             return $next($request);
 
         return abort(403);

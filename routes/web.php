@@ -23,7 +23,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/topsecret', function () {
     return "sadece adminler";
-})->middleware(['auth', 'type:admin'])->name('topsecret');
+})->middleware(['auth', 'type:editor,admin'])->name('topsecret');
 
 
 require __DIR__ . '/auth.php';
